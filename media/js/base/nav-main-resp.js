@@ -393,6 +393,31 @@ NavMain.openSmallMenu = function()
     if (NavMain.smallMenuOpen) {
         return;
     }
+    //tests page location 
+    if (window.location.href == "https://www.mozilla.org/en-US/mission/") {
+    	var current-page = 0;
+    	var current-page-str = '0';
+    }
+    
+    else if (window.location.href == "https://www.mozilla.org/en-US/about/") {
+    	var current-page = 1;
+    	var current-page-str = '1';
+    }
+    
+    else if (window.location.href == "https://www.mozilla.org/en-US/products/") {
+    	var current-page = 2;
+    	var current-page-str = '2';
+    }
+    
+    else if (window.location.href == "https://www.mozilla.org/en-US/contribute/") {
+    	var current-page = 3;
+    	var current-page-str = '3';
+    }
+    
+    else {
+    	var current-page = 0;
+    	var current-page-str = '0';
+    }
 
     $('#nav-main-menu')
         .slideDown(150)
@@ -405,8 +430,8 @@ NavMain.openSmallMenu = function()
         .addClass('submenu-item')
         .click(NavMain.handleSubmenuClick);
 
-    // focus first item
-    $('#nav-main-menu [tabindex=0]').get(0).focus();
+    // focus current page 
+    $('#nav-main-menu [tabindex=current]').replace("current", current-page-str).get(current-page).focus();
 
     NavMain.smallMenuOpen = true;
 };
